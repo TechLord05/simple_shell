@@ -10,6 +10,7 @@ void builtin(char *buff)
 {
 	if (_strcmp(buff, "exit") == 0)
 	{
+		free(buff);
 		exit(0);
 	}
 	else if (_strcmp(buff, "env") == 0)
