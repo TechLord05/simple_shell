@@ -70,32 +70,3 @@ void execute_exit_command(char *av)
 	else
 		is_exit("exit", av);
 }
-
-/**
- * Change_Directory - This function changes the current working directory.
- *
- * @path: The path of the directory to change to.
- *
- * */
-void Change_Directory(const char *path)
-{
-	char cwd[BUFFER_SIZE];
-
-	if (getcwd(cwd, sizeof(cwd)) == NULL)
-	{
-		perror("cd: Failed to get current working directory");
-		return;
-	}
-
-	if (setenv("PWD", cwd, 1) != 0)
-	{
-		perror("cd: Failed to update PWD environment variable");
-		return;
-	}
-
-	if (chdir(path) != 0)
-	{
-		perror("cd: Failed to change directory");
-		return;
-	}
-}
