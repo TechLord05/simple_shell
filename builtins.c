@@ -72,12 +72,12 @@ void execute_exit_command(char *av)
 }
 
 /**
- * change_Directory - This function changes the current working directory.
+ * Change_Directory - This function changes the current working directory.
  *
  * @path: The path of the directory to change to.
  *
  * */
-void change_Directory(const char *path)
+void Change_Directory(const char *path)
 {
 	char cwd[BUFFER_SIZE];
 

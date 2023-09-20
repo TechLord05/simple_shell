@@ -40,7 +40,7 @@ int _putchar(char c);
 void _puts(char *str);
 void _error(char *prog, int count, char *cmd);
 
-
+void Change_Directory(const char *path);
 void is_exit(char *token, char *status);
 void execute_exit_command(char *av);
 int _isdigit(int c);
