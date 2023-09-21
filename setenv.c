@@ -39,42 +39,42 @@ int _setenv(const char *name, const char *value)
  * _putenv - adds or changes the value of an environment variable
  * @string: string of the form name=value
  * Return: 0 on success, 1 on failure
-*/
+ */
 int _putenv(char *string)
 {
-    int i;
-    char *delimeter, **new_environ;
+	int i;
+	char *delimeter, **new_environ;
 
-    delimeter = _strchr(string, '=');
-    if (string == NULL || delimeter == NULL || delimeter == string)
-    {
-        write(STDERR_FILENO, "Error: invalid argument\n", 24);
-        return (1);
-    }
-    /*check if variable exit*/
-    for (i = 0; environ[i] != NULL; i++)
-    {
-        if (_strncmp(string, environ[i], delimeter - string + 1) == 0)
-        {
-            environ[i] = string;
-            return (0);
-        }
-    }
-    /*if variable doesn't exit*/
-    while (environ[i] != NULL)
-        i++;
-    new_environ = malloc(sizeof(char *) * (i + 2));
-    if (new_environ == NULL)
-    {
-        perror("malloc");
-        return (1);
-    }
-    for (i = 0; environ[i] != NULL; i++)
-        new_environ[i] = environ[i];
-    new_environ[i] = string;
-    new_environ[i + 1] = NULL;
-    environ = new_environ;
-    return 0;
+	delimeter = _strchr(string, '=');
+	if (string == NULL || delimeter == NULL || delimeter == string)
+	{
+		write(STDERR_FILENO, "Error: invalid argument\n", 24);
+		return (1);
+	}
+	/*check if variable exit*/
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		if (_strncmp(string, environ[i], delimeter - string + 1) == 0)
+		{
+			environ[i] = string;
+			return (0);
+		}
+	}
+	/*if variable doesn't exit*/
+	while (environ[i] != NULL)
+		i++;
+	new_environ = malloc(sizeof(char *) * (i + 2));
+	if (new_environ == NULL)
+	{
+		perror("malloc");
+		return (1);
+	}
+	for (i = 0; environ[i] != NULL; i++)
+		new_environ[i] = environ[i];
+	new_environ[i] = string;
+	new_environ[i + 1] = NULL;
+	environ = new_environ;
+	return (0);
 }
 
 /**
