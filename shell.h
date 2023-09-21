@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 
 
+#define DIR_SIZE 1024
 
 extern char **environ;
 void Tokenize_Input(char *input, char **av, int count);
@@ -19,6 +20,14 @@ int count_token(char *input);
 int executes_commands(char **av, char *argv);
 int handle_child_process(pid_t pidv, char **av, char *argv);
 int process_input(char *buff, char *argv);
+
+int cd_command(char *dir_es);
+int cmd_helper(char *current_direc, const char *dir __attribute__((unused)));
+int get_working_dir(const char *dir __attribute__((unused)));
+int change_direc(const char *dir);
+int _setenv(const char *name, const char *value);
+int _putenv(char *string);
+int _unsetenv(const char *name);
 
 void builtin(char **av);
 int _env(void);

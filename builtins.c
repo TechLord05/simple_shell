@@ -22,6 +22,10 @@ void builtin(char **av)
 			_env();
 		}
 	}
+	else if (_strcmp(av[0], "cd") == 0)
+	{
+		cd_command(av[1]);
+	}
 }
 
 /**
